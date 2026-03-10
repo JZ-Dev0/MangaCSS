@@ -2,8 +2,11 @@
 
 **Librería 100% CSS+HTML con estilo manga** para cualquier web: landing pages, portfolios, e-commerce, blogs, o simplemente para darle un toque de viñeta a tus proyectos. Sin dependencias, sin JavaScript, sin complicaciones. Solo HTML y CSS puro con ese toque de tinta.
 
-![MangaCSS]
+
 <img width="1304" height="372" alt="Image" src="https://github.com/user-attachments/assets/bc911d3b-5a64-41ab-bd28-659ad385707a" />
+
+**Mira la WEB**
+[MangaCSS](https://jz-dev0.github.io/)
 
 🚀 **Características principales**
 
