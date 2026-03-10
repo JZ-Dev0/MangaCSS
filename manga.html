@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangaCSS v2.0 — Librería CSS para Manga y Web</title>
+    <meta name="description"
+        content="MangaCSS v2.0 — Librería 100% CSS+HTML. Estilos manga para cualquier web: landing pages, portfolios, e-commerce y más.">
+    <link rel="stylesheet" href="mangacss.css">
+    <style>
+        /* ════════════════════════════════════════════
+           SHOWCASE STYLES — No forman parte de la librería
+        ════════════════════════════════════════════ */
+        .showcase-header {
+            text-align: center;
+            padding: 80px 20px 50px;
+            background: var(--manga-black);
+            color: var(--manga-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+            background-size: 12px 12px;
+        }
+
+        .showcase-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.1) 3px, rgba(0, 0, 0, 0.1) 4px);
+        }
+
+        .showcase-header h1 {
+            font-family: var(--font-impact);
+            font-size: clamp(5rem, 14vw, 12rem);
+            letter-spacing: -0.02em;
+            line-height: 0.85;
+            color: var(--manga-white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .showcase-header h1 span {
+            color: transparent;
+            -webkit-text-stroke: 3px var(--manga-white);
+        }
+
+        .showcase-header .version-badge {
+            display: inline-block;
+            background: var(--manga-accent);
+            color: white;
+            font-family: var(--font-impact);
+            font-size: 1rem;
+            padding: 4px 14px;
+            transform: rotate(-3deg);
+            position: relative;
+            z-index: 1;
+            margin-top: 12px;
+            border: 2px solid white;
+        }
+
+        .showcase-header p {
+            font-family: var(--font-narrate);
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-family: var(--font-impact);
+            font-size: 2.5rem;
+            color: var(--manga-black);
+            border-bottom: 6px solid var(--manga-black);
+            padding: 20px 20px 8px;
+            margin: 50px 0 20px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .section-label {
+            font-family: var(--font-narrate);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+            margin-bottom: 4px;
+            padding: 0 20px;
+        }
+
+        .demo-wrapper {
+            padding: 0 20px 20px;
+        }
+
+        .demo-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .code-tag {
+            display: inline-block;
+            font-family: 'Courier New', monospace;
+            font-size: 0.65rem;
+            background: var(--manga-black);
+            color: #9ff;
+            padding: 2px 6px;
+            border-radius: 2px;
+            margin-top: 4px;
+        }
+
+        .showcase-footer {
+            background: var(--manga-black);
+            color: var(--manga-white);
+            text-align: center;
+            padding: 50px 20px;
+            font-family: var(--font-narrate);
+            font-size: 0.85rem;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent 0, transparent 10px, rgba(255, 255, 255, 0.04) 10px, rgba(255, 255, 255, 0.04) 12px);
+        }
+
+        .panel-demo-sm {
+            min-height: 120px;
+        }
+
+        .panel-demo-md {
+            min-height: 200px;
+        }
+
+        .panel-demo-lg {
+            min-height: 320px;
+        }
+
+        .bubble-demo-wrap {
+            padding: 30px 20px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-end;
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: var(--manga-accent);
+            color: white;
+            font-family: var(--font-impact);
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            margin-left: 8px;
+            transform: rotate(-2deg);
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════ HEADER ══════════════════════ -->
+    <div class="showcase-header">
+        <h1 class="anim-slam">MANGA<span>CSS</span></h1>
+        <div class="version-badge">v2.0</div>
+        <p>100% CSS + HTML &nbsp;·&nbsp; Sin dependencias &nbsp;·&nbsp; Para manga, landing pages, portfolios,
+            e-commerce y más 🖊️</p>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 1: VIÑETAS ══════════ -->
+    <div class="section-title">1. Viñetas — <small style="font-size:1.2rem">.panel</small></div>
+    <p class="section-label">Panel básico · Panel oscuro · Panel sin borde · Panel inclinado · Panel doble borde · Panel
+        hover · Panel rounded</p>
+
+    <div class="demo-wrapper">
+        <div class="panel-grid panel-grid-asymmetric" style="max-width:800px">
+            <div class="panel panel-demo-md">
+                <div class="panel-inner">
+                    <div style="text-align:center">
+                        <div class="manga-title manga-title-sm">Panel</div>
+                        <div style="font-family:var(--font-narrate);font-size:.7rem;margin-top:4px">.panel</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-dark panel-demo-md">
+                <div class="panel-inner">
+                    <div style="text-align:center">
+                        <div class="manga-title manga-title-sm manga-title-white">Dark</div>
+                        <div
+                            style="font-family:var(--font-narrate);font-size:.7rem;margin-top:4px;color:var(--manga-white)">
+                            .panel-dark</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-double-border panel-demo-md" style="background:var(--manga-gray-light)">
+                <div class="panel-inner">
+                    <div style="text-align:center">
+                        <div class="manga-title manga-title-sm">Double</div>
+                        <div style="font-family:var(--font-narrate);font-size:.7rem;margin-top:4px">.panel-double-border
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panels v2.0 -->
+        <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:24px">
+            <div class="panel panel-hover panel-shadow" style="width:180px;min-height:100px">
+                <div class="panel-inner" style="flex-direction:column">
+                    <div class="manga-title manga-title-sm">Hover</div>
+                    <span class="code-tag">.panel-hover .panel-shadow</span>
+                </div>
+            </div>
+            <div class="panel panel-hover-grow panel-rounded" style="width:180px;min-height:100px">
+                <div class="panel-inner" style="flex-direction:column">
+                    <div class="manga-title manga-title-sm">Grow</div>
+                    <span class="code-tag">.panel-hover-grow .panel-rounded</span>
+                </div>
+            </div>
+            <div class="panel panel-accent panel-shadow-lg" style="width:180px;min-height:100px">
+                <div class="panel-inner" style="flex-direction:column">
+                    <div class="manga-title manga-title-sm manga-title-accent">Accent</div>
+                    <span class="code-tag">.panel-accent</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panels tilted -->
+        <div style="display:flex;gap:24px;align-items:center;margin-top:30px;padding:30px 0;flex-wrap:wrap">
+            <div class="panel panel-tilted-left" style="width:150px;min-height:90px">
+                <div class="panel-inner">
+                    <div style="font-family:var(--font-narrate);font-size:.72rem;text-align:center">
+                        .panel-tilted-left<br>↺ −1.5°</div>
+                </div>
+            </div>
+            <div class="panel panel-tilted-right" style="width:150px;min-height:90px">
+                <div class="panel-inner">
+                    <div style="font-family:var(--font-narrate);font-size:.72rem;text-align:center">
+                        .panel-tilted-right<br>↻ +1.5°</div>
+                </div>
+            </div>
+            <div class="panel panel-tilted-big panel-dark" style="width:150px;min-height:90px">
+                <div class="panel-inner">
+                    <div
+                        style="font-family:var(--font-narrate);font-size:.72rem;text-align:center;color:var(--manga-white)">
+                        .panel-tilted-big<br>↺ −3°</div>
+                </div>
+            </div>
+            <div class="panel panel-borderless" style="width:150px;min-height:90px;background:var(--manga-gray-light)">
+                <div class="panel-inner">
+                    <div style="font-family:var(--font-narrate);font-size:.72rem;text-align:center">.panel-borderless
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 2: IMÁGENES B&W EN PANELES ══════════ -->
+    <div class="section-title">2. Imágenes en Paneles <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.panel-img-*</small></div>
+    <p class="section-label">bw · manga · ink · sepia · poster · halftone · overlays</p>
+
+    <div class="demo-wrapper">
+        <!-- Row 1: Basic image filters -->
+        <div class="panel-grid panel-grid-trio" style="margin-bottom:8px">
+            <div class="panel panel-demo-md">
+                <img src="https://picsum.photos/seed/manga1/400/300" alt="Demo" class="panel-img panel-img-bw">
+                <div class="panel-inner" style="z-index:2;align-items:flex-end">
+                    <span class="code-tag" style="background:rgba(0,0,0,0.8)">.panel-img-bw (hover = color)</span>
+                </div>
+            </div>
+            <div class="panel panel-demo-md">
+                <img src="https://picsum.photos/seed/manga2/400/300" alt="Demo" class="panel-img panel-img-manga">
+                <div class="panel-inner" style="z-index:2;align-items:flex-end">
+                    <span class="code-tag" style="background:rgba(0,0,0,0.8)">.panel-img-manga (high contrast)</span>
+                </div>
+            </div>
+            <div class="panel panel-demo-md">
+                <img src="https://picsum.photos/seed/manga3/400/300" alt="Demo" class="panel-img panel-img-ink">
+                <div class="panel-inner" style="z-index:2;align-items:flex-end">
+                    <span class="code-tag" style="background:rgba(0,0,0,0.8)">.panel-img-ink (multiply)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: More filters -->
+        <div class="panel-grid panel-grid-trio" style="margin-bottom:8px">
+            <div class="panel panel-demo-md">
+                <img src="https://picsum.photos/seed/manga4/400/300" alt="Demo" class="panel-img panel-img-sepia">
+                <div class="panel-inner" style="z-index:2;align-items:flex-end">
+                    <span class="code-tag" style="background:rgba(0,0,0,0.8)">.panel-img-sepia (hover = color)</span>
+                </div>
+            </div>
+            <div class="panel panel-demo-md">
+                <img src="https://picsum.photos/seed/manga5/400/300" alt="Demo" class="panel-img panel-img-poster">
+                <div class="panel-inner" style="z-index:2;align-items:flex-end">
+                    <span class="code-tag" style="background:rgba(0,0,0,0.8)">.panel-img-poster (harsh B&W)</span>
+                </div>
+            </div>
+            <div class="panel panel-demo-md">
+                <img src="https://picsum.photos/seed/manga6/400/300" alt="Demo" class="panel-img panel-img-halftone">
+                <div class="panel-inner" style="z-index:2;align-items:flex-end">
+                    <span class="code-tag" style="background:rgba(0,0,0,0.8)">.panel-img-halftone</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3: Overlays with text -->
+        <div class="panel-grid panel-grid-duo" style="margin-bottom:8px">
+            <div class="panel panel-demo-md panel-img-overlay-bottom">
+                <img src="https://picsum.photos/seed/manga7/600/400" alt="Demo" class="panel-img panel-img-bw">
+                <div class="panel-inner" style="z-index:2;align-items:flex-end">
+                    <div>
+                        <div class="manga-title manga-title-sm manga-title-white">Overlay Bottom</div>
+                        <div class="manga-body-sm" style="color:rgba(255,255,255,0.7);margin-top:4px">Texto visible
+                            sobre imagen oscurecida</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-demo-md panel-img-overlay-full">
+                <img src="https://picsum.photos/seed/manga8/600/400" alt="Demo" class="panel-img panel-img-bw">
+                <div class="panel-inner" style="z-index:2;flex-direction:column">
+                    <div class="manga-title manga-title-sm manga-title-white">Full Overlay</div>
+                    <div class="manga-body-sm" style="color:rgba(255,255,255,0.7);margin-top:4px;text-align:center">
+                        Perfecto para heroes y secciones destacadas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manga page with images -->
+        <p style="font-family:var(--font-narrate);font-size:.8rem;margin:16px 0 8px;opacity:.6">Ejemplo: Escena manga
+            con imágenes reales</p>
+        <div class="manga-page manga-frame" style="max-width:680px">
+            <div
+                style="background:var(--manga-black);color:var(--manga-white);font-family:var(--font-narrate);font-size:.8rem;padding:6px 12px;margin-bottom:6px">
+                Ciudad de Neo-Tokio — 3:47 A.M.
+            </div>
+            <div class="panel-grid panel-grid-hero-duo" style="margin-bottom:6px">
+                <div class="panel panel-demo-md panel-img-overlay-bottom" style="min-height:220px">
+                    <img src="https://picsum.photos/seed/city1/800/500" alt="City" class="panel-img panel-img-manga">
+                    <div class="narrate narrate-top-left">El silencio...</div>
+                    <div class="panel-inner" style="z-index:2;align-items:flex-end;justify-content:flex-start">
+                        <div class="bubble-dark" style="font-size:.75rem;max-width:140px">¿Quién anda ahí?</div>
+                    </div>
+                </div>
+                <div class="panel" style="min-height:100px">
+                    <img src="https://picsum.photos/seed/face1/400/300" alt="Face" class="panel-img panel-img-poster">
+                    <div class="panel-inner" style="z-index:2">
+                        <span class="sfx-md sfx-outline">!</span>
+                    </div>
+                </div>
+                <div class="panel panel-dark" style="min-height:100px">
+                    <img src="https://picsum.photos/seed/dark1/400/300" alt="Dark" class="panel-img panel-img-ink"
+                        style="opacity:0.3">
+                    <div class="panel-inner" style="z-index:2">
+                        <span class="sfx-lg sfx-white sfx-slant-right">CRASH!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel bg-black panel-demo-md" style="min-height:200px;position:relative">
+                <img src="https://picsum.photos/seed/epic1/800/400" alt="Epic" class="panel-img panel-img-manga"
+                    style="opacity:0.25">
+                <div class="narrate narrate-bottom-right" style="font-size:.65rem">...continuará.</div>
+                <div class="panel-inner" style="z-index:2;flex-direction:column;gap:8px">
+                    <span class="sfx-xl sfx-outline" style="line-height:0.8;font-size:clamp(3rem,12vw,7rem)">DOOM</span>
+                    <div class="bubble-explosive" style="background:white;font-size:.8rem">¡¡FIN!!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-wrapper">
+        <div class="manga-page manga-frame" style="max-width:680px">
+
+            <!-- Narración de apertura -->
+            <div
+                style="background:var(--manga-black); color:var(--manga-white); font-family:var(--font-narrate); font-size:.8rem; padding:6px 12px; margin-bottom:6px">
+                Ciudad de Neo-Tokio — 3:47 A.M.
+            </div>
+
+            <!-- Primera fila: viñeta grande + 2 pequeñas -->
+            <div class="panel-grid panel-grid-hero-duo" style="margin-bottom:6px">
+
+                <!-- Viñeta héroe -->
+                <div class="panel bg-radial-lines panel-demo-md" style="min-height:200px; position:relative">
+                    <div class="narrate narrate-top-left">El silencio...</div>
+                    <div class="panel-inner">
+                        <span class="sfx-xl sfx-double-outline sfx-slant-left" style="opacity:.9">...</span>
+                    </div>
+                </div>
+
+                <!-- Pequeña 1 -->
+                <div class="panel panel-dark" style="min-height:90px; position:relative">
+                    <div class="narrate narrate-top-right" style="font-size:.6rem">00:01</div>
+                    <div class="panel-inner">
+                        <div class="bubble-dark" style="font-size:.75rem; max-width:120px">¿Quién está ahí?</div>
+                    </div>
+                </div>
+
+                <!-- Pequeña 2 -->
+                <div class="panel bg-halftone" style="min-height:90px">
+                    <div class="panel-inner">
+                        <span class="sfx-md sfx-solid sfx-slant-right">¡CRASH!</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Segunda fila: 3 columnas rápidas -->
+            <div class="panel-grid panel-grid-trio" style="margin-bottom:6px">
+                <div class="panel panel-tilted-left" style="min-height:100px">
+                    <div class="panel-inner">
+                        <div class="bubble-shout" style="font-size:.75rem">¡¡ENEMIGO!!</div>
+                    </div>
+                </div>
+                <div class="panel bg-speed-h panel-dark" style="min-height:100px">
+                    <div class="panel-inner">
+                        <span class="sfx-lg sfx-white sfx-slant-big">KA–</span>
+                    </div>
+                </div>
+                <div class="panel panel-tilted-right bg-halftone-big" style="min-height:100px">
+                    <div class="panel-inner">
+                        <span class="sfx-lg sfx-outline sfx-skew">POW!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tercera fila: viñeta épica final -->
+            <div class="panel bg-black panel-demo-lg" style="position:relative; min-height:260px">
+                <div class="narrate narrate-bottom-right" style="font-size:.65rem">...continuará.</div>
+                <div class="panel-inner" style="flex-direction:column; align-items:center; gap:8px">
+                    <span class="sfx-mega sfx-outline"
+                        style="line-height:0.8; font-size: clamp(4rem, 14vw, 9rem)">DOOM</span>
+                    <div class="bubble-explosive" style="background:white; font-size:.8rem">¡¡FIN!!</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ══════════ SECCIÓN 3: LAYOUTS ══════════ -->
+    <div class="section-title">3. Layouts de Grilla — <small style="font-size:1.2rem">.panel-grid-*</small></div>
+    <p class="section-label">hero-duo · golden · magazine · mosaic · auto · cascade <span class="new-badge">NEW
+            LAYOUTS</span></p>
+
+    <div class="demo-wrapper">
+        <p style="font-family:var(--font-narrate);font-size:.75rem;margin-bottom:4px;opacity:.6">.panel-grid-golden
+            (proporción áurea)</p>
+        <div class="panel-grid panel-grid-golden" style="margin-bottom:16px">
+            <div class="panel bg-halftone" style="height:120px">
+                <div class="panel-inner"><span class="manga-title manga-title-sm">1.618</span></div>
+            </div>
+            <div class="panel panel-dark" style="height:120px">
+                <div class="panel-inner"><span class="manga-title manga-title-sm manga-title-white">1</span></div>
+            </div>
+        </div>
+
+        <p style="font-family:var(--font-narrate);font-size:.75rem;margin-bottom:4px;opacity:.6">.panel-grid-magazine
+        </p>
+        <div class="panel-grid panel-grid-magazine" style="margin-bottom:16px">
+            <div class="panel panel-demo-md">
+                <img src="https://picsum.photos/seed/mag1/600/400" alt="" class="panel-img panel-img-bw">
+                <div class="panel-inner" style="z-index:2"><span class="manga-title manga-title-sm"
+                        style="background:white;padding:4px 12px">HERO</span></div>
+            </div>
+            <div class="panel bg-halftone" style="height:100px">
+                <div class="panel-inner">Sub 1</div>
+            </div>
+            <div class="panel panel-dark" style="height:100px">
+                <div class="panel-inner" style="color:white">Sub 2</div>
+            </div>
+        </div>
+
+        <p style="font-family:var(--font-narrate);font-size:.75rem;margin-bottom:4px;opacity:.6">.panel-grid-mosaic</p>
+        <div class="panel-grid panel-grid-mosaic" style="margin-bottom:16px;min-height:300px">
+            <div class="panel"><img src="https://picsum.photos/seed/mos1/400/400" alt="" class="panel-img panel-img-bw">
+            </div>
+            <div class="panel bg-halftone-dark">
+                <div class="panel-inner"><span class="manga-title manga-title-sm manga-title-white">B</span></div>
+            </div>
+            <div class="panel bg-tone-mid">
+                <div class="panel-inner">C</div>
+            </div>
+            <div class="panel panel-dark">
+                <div class="panel-inner" style="color:white">D</div>
+            </div>
+            <div class="panel bg-speed-h">
+                <div class="panel-inner"><span style="background:white;padding:2px 8px">E</span></div>
+            </div>
+            <div class="panel bg-halftone">
+                <div class="panel-inner">F</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 4: FONDOS ══════════ -->
+    <div class="section-title">4. Fondos Especiales — <small style="font-size:1.2rem">.bg-*</small></div>
+    <p class="section-label">halftone · speed · radial · crosshatch · stripe · noise <span class="new-badge">NEW</span>
+    </p>
+
+    <div class="demo-wrapper">
+        <div class="panel-grid panel-grid-trio" style="margin-bottom:8px">
+            <div class="panel bg-halftone panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem">.bg-halftone</span></div>
+            </div>
+            <div class="panel bg-halftone-big panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem">.bg-halftone-big</span></div>
+            </div>
+            <div class="panel bg-halftone-dark panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem;color:white">.bg-halftone-dark</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-grid panel-grid-trio" style="margin-bottom:8px">
+            <div class="panel bg-crosshatch panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem">.bg-crosshatch</span></div>
+            </div>
+            <div class="panel bg-stripe-diagonal panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem">.bg-stripe-diagonal</span></div>
+            </div>
+            <div class="panel bg-radial-lines panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem;background:white;padding:2px 6px">.bg-radial-lines</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-grid panel-grid-trio">
+            <div class="panel bg-speed-h panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem;background:white;padding:2px 6px">.bg-speed-h</span>
+                </div>
+            </div>
+            <div class="panel bg-speed-v panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem;background:white;padding:2px 6px">.bg-speed-v</span>
+                </div>
+            </div>
+            <div class="panel bg-tone-dark panel-demo-sm">
+                <div class="panel-inner"><span
+                        style="font-family:var(--font-narrate);font-size:.7rem;color:white">.bg-tone-dark</span></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 5: GLOBOS ══════════ -->
+    <div class="section-title">5. Globos de Diálogo — <small style="font-size:1.2rem">.bubble-*</small></div>
+    <p class="section-label">talk · think · shout · explosive · dark · whisper · accent</p>
+
+    <div class="demo-wrapper">
+        <div class="bubble-demo-wrap">
+            <div>
+                <div class="bubble-talk">¡Hola,<br>mundo!</div>
+                <div class="code-tag">.bubble-talk</div>
+            </div>
+            <div>
+                <div class="bubble-think">Hmm...<br>¿qué hago?</div>
+                <div class="code-tag">.bubble-think</div>
+            </div>
+            <div>
+                <div class="bubble-shout">¡¡NO!!</div>
+                <div class="code-tag">.bubble-shout</div>
+            </div>
+            <div>
+                <div class="bubble-explosive">¡¡ATAQUE!!</div>
+                <div class="code-tag">.bubble-explosive</div>
+            </div>
+            <div>
+                <div class="bubble-dark">Soy<br>el malo</div>
+                <div class="code-tag">.bubble-dark</div>
+            </div>
+            <div>
+                <div class="bubble-whisper">...secreto...</div>
+                <div class="code-tag">.bubble-whisper</div>
+            </div>
+            <div>
+                <div class="bubble-accent">¡OFERTA!</div>
+                <div class="code-tag">.bubble-accent</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 6: SFX ══════════ -->
+    <div class="section-title">6. Onomatopeyas — <small style="font-size:1.2rem">.sfx-*</small></div>
+    <p class="section-label">Tamaños sm → mega · outline, solid, white, shadow, accent</p>
+
+    <div class="demo-wrapper">
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;margin-bottom:24px">
+            <div><span class="sfx-sm sfx-solid">POW</span><br><span class="code-tag">.sfx-sm</span></div>
+            <div><span class="sfx-md sfx-solid">BAM</span><br><span class="code-tag">.sfx-md</span></div>
+            <div><span class="sfx-lg sfx-outline">ZAP</span><br><span class="code-tag">.sfx-lg</span></div>
+            <div><span class="sfx-xl sfx-accent">KA!</span><br><span class="code-tag">.sfx-accent</span></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;padding:20px 0">
+            <div><span class="sfx-md sfx-solid sfx-slant-left">WHAM!</span><br><span
+                    class="code-tag">.sfx-slant-left</span></div>
+            <div><span class="sfx-md sfx-outline sfx-skew">FWOOSH</span><br><span class="code-tag">.sfx-skew</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 7: BOTONES ══════════ -->
+    <div class="section-title">7. Botones <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.manga-btn-*</small></div>
+    <p class="section-label">default · dark · accent · outline · pill · tamaños sm, lg</p>
+
+    <div class="demo-wrapper">
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:16px">
+            <div><a class="manga-btn">Botón Normal</a><br><span class="code-tag">.manga-btn</span></div>
+            <div><a class="manga-btn manga-btn-dark">Dark</a><br><span class="code-tag">.manga-btn-dark</span></div>
+            <div><a class="manga-btn manga-btn-accent">¡Comprar!</a><br><span class="code-tag">.manga-btn-accent</span>
+            </div>
+            <div><a class="manga-btn manga-btn-outline">Outline</a><br><span class="code-tag">.manga-btn-outline</span>
+            </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+            <div><a class="manga-btn manga-btn-sm">Pequeño</a><br><span class="code-tag">.manga-btn-sm</span></div>
+            <div><a class="manga-btn manga-btn-lg manga-btn-accent manga-btn-pill">¡ESPECIAL!</a><br><span
+                    class="code-tag">.manga-btn-lg .manga-btn-pill</span></div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 8: CARDS ══════════ -->
+    <div class="section-title">8. Cards <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.manga-card-*</small></div>
+    <p class="section-label">Para productos, portfolios, perfiles — con imágenes B&W que revelan color al hover</p>
+
+    <div class="demo-wrapper">
+        <div class="panel-grid panel-grid-trio">
+            <div class="manga-card">
+                <div style="position:relative">
+                    <img src="https://picsum.photos/seed/prod1/400/300" alt="Producto" class="manga-card-img">
+                    <span class="manga-badge manga-badge-accent manga-badge-float">¡OFERTA!</span>
+                </div>
+                <div class="manga-card-body">
+                    <div class="manga-card-title">Producto Épico</div>
+                    <div class="manga-card-text">El producto más increíble que jamás hayas visto. Estilo manga puro.
+                    </div>
+                    <div><span class="manga-card-price">$29.99</span><span class="manga-card-price-old">$49.99</span>
+                    </div>
+                </div>
+                <div class="manga-card-footer">
+                    <span class="manga-tag">Nuevo</span>
+                    <a class="manga-btn manga-btn-sm manga-btn-accent">Comprar</a>
+                </div>
+            </div>
+
+            <div class="manga-card">
+                <img src="https://picsum.photos/seed/prod2/400/300" alt="Producto" class="manga-card-img">
+                <div class="manga-card-body">
+                    <div class="manga-card-title">Diseño Bold</div>
+                    <div class="manga-card-text">Perfecto para portfolios y muestra de proyectos creativos.</div>
+                    <div><span class="manga-card-price">$15.00</span></div>
+                </div>
+                <div class="manga-card-footer">
+                    <span class="manga-tag manga-tag-filled">Popular</span>
+                    <a class="manga-btn manga-btn-sm">Ver más</a>
+                </div>
+            </div>
+
+            <div class="manga-card manga-card-dark">
+                <img src="https://picsum.photos/seed/prod3/400/300" alt="Producto" class="manga-card-img"
+                    style="border-bottom-color:var(--manga-gray-dark)">
+                <div class="manga-card-body">
+                    <div class="manga-card-title" style="color:var(--manga-white)">Edición Dark</div>
+                    <div class="manga-card-text">Variante oscura ideal para temas premium o nocturnos.</div>
+                    <div><span class="manga-card-price">$39.99</span></div>
+                </div>
+                <div class="manga-card-footer" style="border-top-color:var(--manga-gray-dark)">
+                    <span class="manga-tag"
+                        style="border-color:var(--manga-gray-mid);color:var(--manga-gray-mid)">Premium</span>
+                    <a class="manga-btn manga-btn-sm manga-btn-accent">Comprar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 9: BADGES & TAGS ══════════ -->
+    <div class="section-title">9. Badges & Tags <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.manga-badge / .manga-tag</small></div>
+
+    <div class="demo-wrapper">
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px">
+            <div><span class="manga-badge">Default</span> <span class="code-tag">.manga-badge</span></div>
+            <div><span class="manga-badge manga-badge-dark">Dark</span> <span class="code-tag">.manga-badge-dark</span>
+            </div>
+            <div><span class="manga-badge manga-badge-accent">Oferta</span> <span
+                    class="code-tag">.manga-badge-accent</span></div>
+            <div><span class="manga-badge manga-badge-pill">Pill</span> <span class="code-tag">.manga-badge-pill</span>
+            </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+            <span class="manga-tag">CSS</span>
+            <span class="manga-tag">HTML</span>
+            <span class="manga-tag manga-tag-filled">Manga</span>
+            <span class="manga-tag">Design</span>
+            <span class="manga-tag manga-tag-filled">v2.0</span>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 10: HERO SECTION ══════════ -->
+    <div class="section-title">10. Hero Section <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.manga-hero</small></div>
+    <p class="section-label">Hero sections para landing pages con imagen de fondo manga</p>
+
+    <div class="demo-wrapper">
+        <div class="manga-hero manga-frame" style="min-height:50vh;max-width:800px">
+            <img src="https://picsum.photos/seed/hero1/1200/600" alt="Hero BG" class="manga-hero-bg">
+            <div class="manga-hero-overlay manga-hero-overlay-halftone"></div>
+            <div class="manga-hero-content">
+                <div class="manga-title manga-title-white" style="font-size:clamp(3rem,8vw,6rem)">¡BIENVENIDO!</div>
+                <div class="manga-subtitle" style="color:rgba(255,255,255,0.7);margin:12px 0 24px">Tu próxima aventura
+                    comienza aquí</div>
+                <a class="manga-btn manga-btn-accent manga-btn-lg">¡Explorar Ahora!</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 11: NAVBAR ══════════ -->
+    <div class="section-title">11. Navbar <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.manga-nav</small></div>
+
+    <div class="demo-wrapper">
+        <nav class="manga-nav manga-frame" style="max-width:800px;position:relative">
+            <a class="manga-nav-brand">MANGA<span style="opacity:.4">CSS</span></a>
+            <ul class="manga-nav-links">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Galería</a></li>
+                <li><a href="#" class="manga-btn manga-btn-sm manga-btn-accent" style="box-shadow:none">¡Comprar!</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 12: QUOTES ══════════ -->
+    <div class="section-title">12. Quotes <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.manga-quote</small></div>
+
+    <div class="demo-wrapper">
+        <div class="manga-quote" style="max-width:600px">
+            MangaCSS transformó completamente mi forma de diseñar páginas web. Ahora todo tiene ese estilo dramático y
+            único.
+            <span class="manga-quote-author">— Un desarrollador satisfecho</span>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 13: ANIMACIONES ══════════ -->
+    <div class="section-title">13. Animaciones <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.anim-*</small></div>
+    <p class="section-label">shake · pulse · float · slam · slide-up · fade-in · ink-reveal</p>
+
+    <div class="demo-wrapper">
+        <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+            <div class="panel panel-shadow anim-shake-hover" style="width:140px;min-height:80px">
+                <div class="panel-inner" style="flex-direction:column;gap:4px">
+                    <span class="sfx-sm sfx-solid">SHAKE!</span>
+                    <span class="code-tag">.anim-shake-hover</span>
+                </div>
+            </div>
+            <div class="panel panel-shadow anim-pulse" style="width:140px;min-height:80px">
+                <div class="panel-inner" style="flex-direction:column;gap:4px">
+                    <span class="sfx-sm sfx-solid">PULSE</span>
+                    <span class="code-tag">.anim-pulse</span>
+                </div>
+            </div>
+            <div class="panel panel-shadow anim-float" style="width:140px;min-height:80px">
+                <div class="panel-inner" style="flex-direction:column;gap:4px">
+                    <span class="sfx-sm sfx-solid">FLOAT</span>
+                    <span class="code-tag">.anim-float</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 14: TIPOGRAFÍA ══════════ -->
+    <div class="section-title">14. Tipografía Manga — <small style="font-size:1.2rem">.manga-title / .manga-body</small>
+    </div>
+
+    <div class="demo-wrapper">
+        <div style="margin-bottom:16px;border:4px solid var(--manga-black);padding:20px">
+            <div class="manga-title">TÍTULO ÉPICO</div>
+            <div class="manga-title manga-title-outline" style="font-size:clamp(2.5rem,6vw,5rem)">SOLO OUTLINE</div>
+            <div class="manga-title manga-title-accent manga-title-sm" style="margin-top:8px">TÍTULO ACCENT</div>
+        </div>
+        <div style="max-width:600px;margin-top:16px">
+            <p class="manga-subtitle">Texto en cuerpo</p>
+            <p class="manga-body" style="margin-top:8px">Este es el estilo <strong>.manga-body</strong> — pensado para
+                textos largos en landing pages, describir productos, o cualquier contenido que necesite buena
+                legibilidad fuera el contexto manga.</p>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 15: TOOLTIPS ══════════ -->
+    <div class="section-title">15. Tooltips <span class="new-badge">NEW</span> — <small
+            style="font-size:1.2rem">.manga-tooltip</small></div>
+
+    <div class="demo-wrapper">
+        <p class="manga-body">Pasa el mouse sobre los elementos:
+            <span class="manga-tooltip manga-badge manga-badge-dark" data-tooltip="¡Soy un tooltip manga!">Hover
+                aquí</span>
+            &nbsp;&nbsp;
+            <span class="manga-tooltip manga-badge manga-badge-accent" data-tooltip="Funciona con cualquier elemento">Y
+                aquí</span>
+        </p>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 16: SEPARADORES ══════════ -->
+    <div class="section-title">16. Separadores — <small style="font-size:1.2rem">.manga-divider-*</small></div>
+
+    <div class="demo-wrapper">
+        <div class="manga-divider"></div>
+        <p style="font-family:var(--font-narrate);font-size:.7rem;opacity:.5;margin:6px 0">.manga-divider</p>
+        <div class="manga-divider-double" style="margin-bottom:6px"></div>
+        <p style="font-family:var(--font-narrate);font-size:.7rem;opacity:.5;margin:6px 0">.manga-divider-double</p>
+        <div class="manga-divider-dotted"></div>
+        <p style="font-family:var(--font-narrate);font-size:.7rem;opacity:.5;margin:6px 0">.manga-divider-dotted</p>
+        <div class="manga-divider-zigzag"></div>
+        <p style="font-family:var(--font-narrate);font-size:.7rem;opacity:.5">.manga-divider-zigzag</p>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 17: DEMO E-COMMERCE ══════════ -->
+    <div class="section-title">17. Demo: Landing Page E-Commerce <span class="new-badge">EJEMPLO</span></div>
+    <p class="section-label">Así se ve MangaCSS usado en una web de ventas real</p>
+
+    <div class="demo-wrapper">
+        <div class="manga-frame" style="max-width:900px;overflow:hidden">
+            <!-- Mini navbar -->
+            <nav class="manga-nav" style="position:relative">
+                <a class="manga-nav-brand">MANGA<span style="opacity:.4">SHOP</span></a>
+                <ul class="manga-nav-links">
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="#" class="manga-btn manga-btn-sm manga-btn-accent" style="box-shadow:none">🛒
+                            Carrito</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mini hero -->
+            <div class="manga-hero" style="min-height:280px">
+                <img src="https://picsum.photos/seed/shop1/1200/500" alt="" class="manga-hero-bg">
+                <div class="manga-hero-overlay manga-hero-overlay-halftone"></div>
+                <div class="manga-hero-content">
+                    <div class="manga-title manga-title-white" style="font-size:clamp(2.5rem,6vw,4.5rem)">¡MEGA OFERTA!
+                    </div>
+                    <div class="manga-subtitle" style="color:rgba(255,255,255,0.7);margin:8px 0 16px">Hasta 50% de
+                        descuento en toda la tienda</div>
+                    <a class="manga-btn manga-btn-accent">¡Ver Ofertas!</a>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div style="padding:24px">
+                <div class="manga-title manga-title-sm" style="margin-bottom:16px">Productos Destacados</div>
+                <div class="panel-grid panel-grid-trio manga-gap-md">
+                    <div class="manga-card">
+                        <div style="position:relative">
+                            <img src="https://picsum.photos/seed/item1/400/300" alt="" class="manga-card-img">
+                            <span class="manga-badge manga-badge-accent manga-badge-float">-30%</span>
+                        </div>
+                        <div class="manga-card-body">
+                            <div class="manga-card-title">Camiseta Manga</div>
+                            <div class="manga-card-text">Diseño exclusivo con arte manga original.</div>
+                            <div><span class="manga-card-price">$21.00</span><span
+                                    class="manga-card-price-old">$30.00</span></div>
+                        </div>
+                        <div class="manga-card-footer">
+                            <div><span class="manga-tag">S</span><span class="manga-tag">M</span><span
+                                    class="manga-tag">L</span></div>
+                            <a class="manga-btn manga-btn-sm manga-btn-accent">Comprar</a>
+                        </div>
+                    </div>
+                    <div class="manga-card">
+                        <img src="https://picsum.photos/seed/item2/400/300" alt="" class="manga-card-img">
+                        <div class="manga-card-body">
+                            <div class="manga-card-title">Poster Art</div>
+                            <div class="manga-card-text">Impresión premium en papel artístico.</div>
+                            <div><span class="manga-card-price">$12.99</span></div>
+                        </div>
+                        <div class="manga-card-footer">
+                            <span class="manga-tag manga-tag-filled">Nuevo</span>
+                            <a class="manga-btn manga-btn-sm">Agregar</a>
+                        </div>
+                    </div>
+                    <div class="manga-card">
+                        <img src="https://picsum.photos/seed/item3/400/300" alt="" class="manga-card-img">
+                        <div class="manga-card-body">
+                            <div class="manga-card-title">Stickers Pack</div>
+                            <div class="manga-card-text">Pack de 20 stickers manga estilo retro.</div>
+                            <div><span class="manga-card-price">$8.50</span></div>
+                        </div>
+                        <div class="manga-card-footer">
+                            <span class="manga-tag manga-tag-filled">Popular</span>
+                            <a class="manga-btn manga-btn-sm">Agregar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote -->
+            <div style="padding:0 24px 24px">
+                <div class="manga-quote">
+                    ¡Los productos MangaShop son increíbles! La calidad del arte y la impresión superaron mis
+                    expectativas.
+                    <span class="manga-quote-author">— Cliente @OtakuFan2026</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════ SECCIÓN 18: REFERENCIA RÁPIDA ══════════ -->
+    <div class="section-title">18. Referencia Rápida — Todas las Clases</div>
+    <div class="demo-wrapper">
+        <div
+            style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;font-family:'Courier New',monospace;font-size:.68rem">
+
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">PÁGINA</strong><br>
+                .manga-page · .manga-page-full<br>.manga-frame · .manga-frame-thick<br>.manga-frame-accent
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">PANEL</strong><br>
+                .panel · .panel-dark · .panel-borderless<br>.panel-double-border ·
+                .panel-shadow/-lg<br>.panel-rounded/-lg · .panel-pill<br>.panel-accent ·
+                .panel-accent-bg<br>.panel-hover/-grow/-tilt<br>.panel-tilted-left/-right/-big<br>.panel-overlap
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">IMÁGENES <span
+                        style="color:var(--manga-accent)">NEW</span></strong><br>
+                .panel-img · .panel-img-bw<br>.panel-img-manga · .panel-img-ink<br>.panel-img-sepia ·
+                .panel-img-poster<br>.panel-img-halftone · .panel-img-inline<br>.panel-img-overlay-bottom/-top/-full
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">GRILLA</strong><br>
+                .panel-grid-solo/-duo/-trio/-quad<br>.panel-grid-main-side/-side-main<br>.panel-grid-hero-duo/-duo-hero<br>.panel-grid-asymmetric
+                · .panel-grid-auto<br>.panel-grid-golden/-reverse<br>.panel-grid-magazine ·
+                .panel-grid-mosaic<br>.panel-grid-cascade
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">FONDOS</strong><br>
+                .bg-halftone/-dark/-big/-diagonal<br>.bg-speed-h/-v · .bg-radial-lines<br>.bg-action-lines ·
+                .bg-crosshatch<br>.bg-stripe-h/-diagonal ·
+                .bg-noise<br>.bg-tone-light/-mid/-dark<br>.bg-black/-white/-paper/-accent
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">BOTONES <span
+                        style="color:var(--manga-accent)">NEW</span></strong><br>
+                .manga-btn · .manga-btn-dark<br>.manga-btn-accent · .manga-btn-outline<br>.manga-btn-pill ·
+                .manga-btn-sm/-lg
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">CARDS <span
+                        style="color:var(--manga-accent)">NEW</span></strong><br>
+                .manga-card · .manga-card-dark<br>.manga-card-img · .manga-card-body<br>.manga-card-title ·
+                .manga-card-text<br>.manga-card-price/-old · .manga-card-footer
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">COMPONENTES <span
+                        style="color:var(--manga-accent)">NEW</span></strong><br>
+                .manga-hero · .manga-hero-content<br>.manga-hero-bg · .manga-hero-overlay<br>.manga-nav ·
+                .manga-nav-brand<br>.manga-badge/-dark/-accent/-pill<br>.manga-tag/-filled ·
+                .manga-quote<br>.manga-tooltip · .manga-section
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">ANIMACIONES <span
+                        style="color:var(--manga-accent)">NEW</span></strong><br>
+                .anim-shake/-shake-hover<br>.anim-pulse · .anim-float<br>.anim-slam ·
+                .anim-slide-up/-left<br>.anim-fade-in · .anim-ink-reveal<br>.anim-delay-1 → 5
+            </div>
+            <div style="border:2px solid var(--manga-black);padding:10px">
+                <strong style="font-family:var(--font-impact);font-size:1rem">UTILIDADES</strong><br>
+                .manga-p-sm/-md/-lg/-xl<br>.manga-gap-sm/-md/-lg<br>.manga-flex/-center/-col/-wrap<br>.manga-text-left/-center/-right<br>.manga-container/-sm/-lg<br>.manga-mw-sm/-md/-lg/-xl<br>.rotate-1/2/3/5
+                · .z-top/-high
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <div class="showcase-footer">
+        <div style="position:relative;z-index:1">
+            <div style="font-family:var(--font-impact);font-size:3.5rem;letter-spacing:0.05em">MANGA<span
+                    style="opacity:.4">CSS</span></div>
+            <p style="margin-top:8px;opacity:.6">v2.0 &nbsp;·&nbsp; 100% CSS+HTML, zero dependencias &nbsp;·&nbsp;
+                Creada con ☕ y tinta</p>
+            <p style="margin-top:6px;opacity:.4;font-size:.7rem">「漫画」&nbsp; Para manga · landing pages · e-commerce ·
+                portfolios · cualquier web</p>
+            <div style="margin-top:20px;display:flex;gap:12px;justify-content:center">
+                <span class="manga-badge manga-badge-pill"
+                    style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.6)">HTML</span>
+                <span class="manga-badge manga-badge-pill"
+                    style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.6)">CSS</span>
+                <span class="manga-badge manga-badge-pill"
+                    style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.6)">0 JS</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

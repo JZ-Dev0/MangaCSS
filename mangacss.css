@@ -1,0 +1,1179 @@
+/* ═══════════════════════════════════════════════════════════════
+   MANGACSS v2.0
+   Librería 100% CSS+HTML — Blanco, Negro, Caos y Drama
+   Para manga, landing pages, portfolios, e-commerce y más
+   Creada con amor y tinta 🖊️
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── RESET & BASE ─── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Permanent+Marker&family=Oswald:wght@700&family=Special+Elite&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --manga-black: #0a0a0a;
+    --manga-white: #faf8f2;
+    --manga-gray-light: #e8e4d9;
+    --manga-gray-mid: #999;
+    --manga-gray-dark: #333;
+    --manga-ink: #1a1a1a;
+    --manga-paper: #fdf9ee;
+    --manga-accent: #ff3d3d;
+    --manga-accent-alt: #ffd700;
+    --border-thick: 4px;
+    --border-thin: 2px;
+    --font-impact: 'Bangers', 'Oswald', cursive;
+    --font-dialog: 'Comic Neue', 'Special Elite', cursive;
+    --font-narrate: 'Special Elite', serif;
+    --font-sfx: 'Permanent Marker', 'Bangers', cursive;
+    --font-body: 'Inter', 'Comic Neue', sans-serif;
+    --manga-radius: 0px;
+    --manga-shadow: 4px 4px 0 var(--manga-black);
+    --manga-shadow-lg: 8px 8px 0 var(--manga-black);
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--manga-paper);
+    color: var(--manga-black);
+    font-family: var(--font-dialog);
+    overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   1. PÁGINA MANGA (.manga-page)
+══════════════════════════════════════════════════════ */
+.manga-page {
+    position: relative;
+    background: var(--manga-paper);
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 12px;
+    overflow: visible;
+}
+
+.manga-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23fdf9ee'/%3E%3Crect x='0' y='0' width='1' height='1' fill='%23e8e4d9' opacity='0.3'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Full width page variant */
+.manga-page-full {
+    max-width: 100%;
+    padding: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   2. LAYOUT DE VIÑETAS (.panel-grid-*)
+══════════════════════════════════════════════════════ */
+.panel-grid {
+    display: grid;
+    gap: 6px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 6px;
+}
+
+.panel-grid-solo { grid-template-columns: 1fr; }
+.panel-grid-duo { grid-template-columns: 1fr 1fr; }
+.panel-grid-main-side { grid-template-columns: 2fr 1fr; }
+.panel-grid-side-main { grid-template-columns: 1fr 2fr; }
+.panel-grid-trio { grid-template-columns: 1fr 1fr 1fr; }
+.panel-grid-quad { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.panel-grid-hero-duo {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+.panel-grid-hero-duo .panel:first-child,
+.panel-grid-hero-duo > *:first-child { grid-column: 1 / -1; }
+
+.panel-grid-duo-hero {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+.panel-grid-duo-hero .panel:last-child,
+.panel-grid-duo-hero > *:last-child { grid-column: 1 / -1; }
+
+.panel-grid-asymmetric { grid-template-columns: 3fr 2fr 1fr; }
+
+/* v2.0 — Golden ratio layout */
+.panel-grid-golden { grid-template-columns: 1.618fr 1fr; }
+.panel-grid-golden-reverse { grid-template-columns: 1fr 1.618fr; }
+
+/* v2.0 — Magazine layout */
+.panel-grid-magazine {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+.panel-grid-magazine > *:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+/* v2.0 — Mosaic */
+.panel-grid-mosaic {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.panel-grid-mosaic > *:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
+.panel-grid-mosaic > *:nth-child(2) { grid-column: 3 / 5; }
+.panel-grid-mosaic > *:nth-child(3) { grid-column: 3; grid-row: 2; }
+.panel-grid-mosaic > *:nth-child(4) { grid-column: 4; grid-row: 2; }
+.panel-grid-mosaic > *:nth-child(5) { grid-column: 1 / 3; grid-row: 3; }
+.panel-grid-mosaic > *:nth-child(6) { grid-column: 3 / 5; grid-row: 3; }
+
+/* v2.0 — Diagonal stagger */
+.panel-grid-cascade {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.panel-grid-cascade .panel:nth-child(2n) { margin-left: 40px; }
+.panel-grid-cascade .panel:nth-child(3n) { margin-right: 40px; }
+
+/* v2.0 — Auto-fill responsive grid */
+.panel-grid-auto {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+/* ═══════════════════════════════════════════════════════
+   3. VIÑETA BASE (.panel)
+══════════════════════════════════════════════════════ */
+.panel {
+    position: relative;
+    background: var(--manga-white);
+    border: var(--border-thick) solid var(--manga-black);
+    overflow: hidden;
+    min-height: 80px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.panel-borderless { border: none !important; overflow: visible; }
+.panel-dark { background: var(--manga-black); color: var(--manga-white); }
+.panel-double-border {
+    border: var(--border-thick) solid var(--manga-black);
+    outline: 2px solid var(--manga-black);
+    outline-offset: 4px;
+}
+.panel-tilted-left { transform: rotate(-1.5deg); z-index: 2; }
+.panel-tilted-right { transform: rotate(1.5deg); z-index: 2; }
+.panel-tilted-big { transform: rotate(-3deg); z-index: 2; }
+
+.panel-overlap {
+    position: absolute;
+    z-index: 10;
+    box-shadow: 6px 6px 0 var(--manga-black);
+}
+
+/* v2.0 — Panel con sombra manga */
+.panel-shadow { box-shadow: var(--manga-shadow); }
+.panel-shadow-lg { box-shadow: var(--manga-shadow-lg); }
+
+/* v2.0 — Panel redondeado */
+.panel-rounded { border-radius: 12px; }
+.panel-rounded-lg { border-radius: 24px; }
+.panel-pill { border-radius: 999px; }
+
+/* v2.0 — Panel con borde accent */
+.panel-accent { border-color: var(--manga-accent); }
+.panel-accent-bg { background: var(--manga-accent); color: var(--manga-white); }
+
+/* v2.0 — Panel hover effects */
+.panel-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--manga-shadow-lg);
+}
+.panel-hover-grow:hover {
+    transform: scale(1.03);
+    z-index: 10;
+    box-shadow: var(--manga-shadow-lg);
+}
+.panel-hover-tilt:hover {
+    transform: rotate(-2deg) scale(1.02);
+    z-index: 10;
+}
+
+/* Panel inner content */
+.panel-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   4. PANEL IMAGES (.panel-img)
+   Imágenes dentro de paneles con filtro B&W manga
+══════════════════════════════════════════════════════ */
+.panel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+}
+
+/* B&W manga style (como en prueva.html) */
+.panel-img-bw {
+    filter: grayscale(100%) contrast(1.2);
+    transition: filter var(--transition-normal);
+}
+.panel-img-bw:hover,
+.panel:hover .panel-img-bw {
+    filter: grayscale(0%) contrast(1);
+}
+
+/* High contrast manga */
+.panel-img-manga {
+    filter: grayscale(100%) contrast(1.6) brightness(1.1);
+    transition: filter var(--transition-normal);
+}
+.panel:hover .panel-img-manga {
+    filter: grayscale(100%) contrast(1.3) brightness(1.05);
+}
+
+/* Ink wash style */
+.panel-img-ink {
+    filter: grayscale(100%) contrast(2) brightness(0.9);
+    mix-blend-mode: multiply;
+}
+
+/* Sepia vintage */
+.panel-img-sepia {
+    filter: grayscale(100%) sepia(80%) contrast(1.1);
+    transition: filter var(--transition-normal);
+}
+.panel:hover .panel-img-sepia {
+    filter: grayscale(0%) sepia(0%) contrast(1);
+}
+
+/* Poster style - harsh B&W */
+.panel-img-poster {
+    filter: grayscale(100%) contrast(3) brightness(1.2);
+}
+
+/* Halftone overlay on images */
+.panel-img-halftone {
+    filter: grayscale(100%) contrast(1.3);
+}
+.panel-img-halftone + .panel-inner::before,
+.panel.panel-img-halftone-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px);
+    background-size: 6px 6px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Image overlay gradients */
+.panel-img-overlay-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.panel-img-overlay-top::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.panel-img-overlay-full::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Relative img (inline, not absolute) */
+.panel-img-inline {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ═══════════════════════════════════════════════════════
+   5. FONDOS ESPECIALES
+══════════════════════════════════════════════════════ */
+.bg-halftone {
+    background-color: var(--manga-white);
+    background-image: radial-gradient(circle, #555 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+.bg-halftone-dark {
+    background-color: var(--manga-black);
+    background-image: radial-gradient(circle, #ccc 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+.bg-halftone-big {
+    background-color: var(--manga-white);
+    background-image: radial-gradient(circle, #333 2px, transparent 2px);
+    background-size: 14px 14px;
+}
+.bg-halftone-diagonal {
+    background-color: var(--manga-white);
+    background-image: radial-gradient(circle, #444 1.5px, transparent 1.5px);
+    background-size: 10px 10px;
+    background-position: 5px 5px;
+}
+.bg-speed-h {
+    background: repeating-linear-gradient(90deg,
+        var(--manga-black) 0px, var(--manga-black) 2px,
+        transparent 2px, transparent 10px,
+        var(--manga-black) 10px, var(--manga-black) 11px,
+        transparent 11px, transparent 20px);
+}
+.bg-speed-v {
+    background: repeating-linear-gradient(180deg,
+        var(--manga-black) 0px, var(--manga-black) 1px,
+        transparent 1px, transparent 8px);
+}
+.bg-radial-lines {
+    background: repeating-conic-gradient(from 0deg at 50% 50%,
+        var(--manga-black) 0deg 1deg, var(--manga-white) 1deg 5deg);
+}
+.bg-action-lines {
+    background: repeating-linear-gradient(45deg,
+        var(--manga-white) 0px, var(--manga-white) 6px,
+        #ddd 6px, #ddd 8px);
+}
+.bg-tone-light {
+    background-color: var(--manga-white);
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px);
+}
+.bg-tone-mid { background-color: #bbb; }
+.bg-tone-dark {
+    background: repeating-linear-gradient(45deg, #222 0px, #222 2px, #444 2px, #444 4px);
+}
+.bg-black { background: var(--manga-black); }
+.bg-white { background: var(--manga-white); }
+
+/* v2.0 — New backgrounds */
+.bg-crosshatch {
+    background-color: var(--manga-white);
+    background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.1) 4px, rgba(0,0,0,0.1) 5px),
+        repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(0,0,0,0.1) 4px, rgba(0,0,0,0.1) 5px);
+}
+.bg-noise {
+    background-color: var(--manga-white);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+}
+.bg-stripe-h {
+    background: repeating-linear-gradient(0deg,
+        var(--manga-white) 0px, var(--manga-white) 4px,
+        var(--manga-gray-light) 4px, var(--manga-gray-light) 5px);
+}
+.bg-stripe-diagonal {
+    background: repeating-linear-gradient(45deg,
+        var(--manga-white) 0px, var(--manga-white) 8px,
+        var(--manga-gray-light) 8px, var(--manga-gray-light) 10px);
+}
+.bg-paper {
+    background: var(--manga-paper);
+}
+.bg-accent {
+    background: var(--manga-accent);
+}
+
+/* ═══════════════════════════════════════════════════════
+   6. GLOBOS DE DIÁLOGO (.bubble-*)
+══════════════════════════════════════════════════════ */
+[class*="bubble"] {
+    position: relative;
+    display: inline-block;
+    padding: 10px 16px;
+    font-family: var(--font-dialog);
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    text-align: center;
+    max-width: 200px;
+    z-index: 5;
+    cursor: default;
+}
+
+[class*="bubble"]::after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 20px;
+    border: 10px solid transparent;
+    border-top-color: var(--manga-black);
+    border-top-width: 20px;
+}
+
+[class*="bubble"]:not(.bubble-dark):not(.bubble-accent)::before {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 22px;
+    border: 8px solid transparent;
+    border-top-color: var(--manga-white);
+    border-top-width: 16px;
+    z-index: 1;
+}
+
+.bubble-talk {
+    background: var(--manga-white);
+    border: 3px solid var(--manga-black);
+    border-radius: 50%;
+    padding: 14px 20px;
+}
+
+.bubble-think {
+    background: var(--manga-white);
+    border: 3px solid var(--manga-black);
+    border-radius: 16px;
+}
+.bubble-think::after {
+    content: '';
+    position: absolute;
+    bottom: -22px; left: 24px;
+    width: 8px; height: 8px;
+    background: var(--manga-black);
+    border-radius: 50%;
+    box-shadow: 8px 6px 0 -1px var(--manga-black), 14px 14px 0 -3px var(--manga-black);
+    border: none;
+}
+.bubble-think::before { display: none; }
+
+.bubble-shout {
+    background: var(--manga-white);
+    border: 3px solid var(--manga-black);
+    clip-path: polygon(4% 0%,12% 0%,16% 4%,24% 0%,30% 3%,38% 0%,44% 0%,50% 4%,56% 0%,64% 0%,68% 3%,76% 0%,84% 0%,88% 4%,96% 0%,100% 4%,100% 96%,96% 100%,88% 97%,80% 100%,72% 97%,64% 100%,56% 97%,48% 100%,40% 97%,32% 100%,24% 97%,16% 100%,8% 97%,0% 100%,0% 4%);
+    padding: 16px 20px;
+}
+.bubble-shout::after, .bubble-shout::before { display: none; }
+
+.bubble-explosive {
+    background: var(--manga-white);
+    border: 4px solid var(--manga-black);
+    border-radius: 50%;
+    padding: 16px 22px;
+    box-shadow: 0 -20px 0 -10px var(--manga-black),14px -14px 0 -10px var(--manga-black),20px 0 0 -10px var(--manga-black),14px 14px 0 -10px var(--manga-black),0 20px 0 -10px var(--manga-black),-14px 14px 0 -10px var(--manga-black),-20px 0 0 -10px var(--manga-black),-14px -14px 0 -10px var(--manga-black),0 -30px 0 -12px var(--manga-black),21px -21px 0 -12px var(--manga-black),30px 0 0 -12px var(--manga-black);
+}
+.bubble-explosive::after, .bubble-explosive::before { display: none; }
+
+.bubble-dark {
+    background: var(--manga-black);
+    color: var(--manga-white);
+    border: 3px solid var(--manga-white);
+    border-radius: 50%;
+    padding: 14px 20px;
+}
+.bubble-dark::after { border-top-color: var(--manga-white); }
+
+.bubble-whisper {
+    background: var(--manga-white);
+    border: 2px dashed var(--manga-black);
+    border-radius: 50%;
+    padding: 12px 18px;
+    font-style: italic;
+    font-size: 0.8rem;
+}
+.bubble-whisper::after { border-top-color: var(--manga-black); opacity: 0.6; }
+.bubble-whisper::before { opacity: 0; }
+
+/* v2.0 — Bubble accent */
+.bubble-accent {
+    background: var(--manga-accent);
+    color: var(--manga-white);
+    border: 3px solid var(--manga-black);
+    border-radius: 50%;
+    padding: 14px 20px;
+    font-weight: 700;
+}
+
+/* Bubble directions */
+.bubble-right::after { left: auto; right: 20px; bottom: -18px; }
+.bubble-right::before { left: auto; right: 22px; bottom: -12px; }
+.bubble-top::after {
+    bottom: auto; top: -20px;
+    border-top-color: transparent;
+    border-bottom-color: var(--manga-black);
+    border-bottom-width: 20px;
+    border-top-width: 0;
+}
+.bubble-top::before {
+    bottom: auto; top: -12px;
+    border-top-color: transparent;
+    border-bottom-color: var(--manga-white);
+    border-bottom-width: 16px;
+    border-top-width: 0;
+    z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════
+   7. ONOMATOPEYAS (.sfx-*)
+══════════════════════════════════════════════════════ */
+[class*="sfx"] {
+    font-family: var(--font-sfx);
+    display: inline-block;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 6;
+    user-select: none;
+}
+.sfx-sm { font-size: 2rem; }
+.sfx-md { font-size: 4rem; }
+.sfx-lg { font-size: 7rem; }
+.sfx-xl { font-size: 11rem; }
+.sfx-mega { font-size: 16rem; }
+.sfx-outline { color: var(--manga-white); -webkit-text-stroke: 4px var(--manga-black); paint-order: stroke fill; }
+.sfx-outline-thin { color: var(--manga-white); -webkit-text-stroke: 2px var(--manga-black); }
+.sfx-solid { color: var(--manga-black); }
+.sfx-white { color: var(--manga-white); -webkit-text-stroke: 3px var(--manga-black); }
+.sfx-shadow { color: var(--manga-black); text-shadow: 4px 4px 0 rgba(0,0,0,0.3); }
+.sfx-double-outline { color: var(--manga-white); -webkit-text-stroke: 6px var(--manga-black); text-shadow: 0 0 0 var(--manga-white),3px 3px 0 var(--manga-black); }
+.sfx-slant-left { transform: rotate(-8deg); display: inline-block; }
+.sfx-slant-right { transform: rotate(8deg); display: inline-block; }
+.sfx-slant-big { transform: rotate(-15deg); display: inline-block; }
+.sfx-slant-up { transform: skewX(-12deg); display: inline-block; }
+.sfx-skew { transform: skewX(-20deg) scaleY(1.2); display: inline-block; }
+
+/* v2.0 — SFX accent color */
+.sfx-accent { color: var(--manga-accent); -webkit-text-stroke: 3px var(--manga-black); paint-order: stroke fill; }
+
+/* ═══════════════════════════════════════════════════════
+   8. TEXTO NARRATIVO (.narrate)
+══════════════════════════════════════════════════════ */
+.narrate {
+    font-family: var(--font-narrate);
+    font-size: 0.75rem;
+    background: var(--manga-black);
+    color: var(--manga-white);
+    padding: 4px 10px;
+    display: inline-block;
+    position: absolute;
+    z-index: 8;
+    line-height: 1.4;
+    max-width: 180px;
+}
+.narrate-white { background: var(--manga-white); color: var(--manga-black); border: 2px solid var(--manga-black); }
+.narrate-top-left { top: 0; left: 0; }
+.narrate-top-right { top: 0; right: 0; }
+.narrate-bottom-left { bottom: 0; left: 0; }
+.narrate-bottom-right { bottom: 0; right: 0; }
+.narrate-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+/* ═══════════════════════════════════════════════════════
+   9. TIPOGRAFÍA (.manga-title, .manga-text-*)
+══════════════════════════════════════════════════════ */
+.manga-title {
+    font-family: var(--font-impact);
+    font-size: clamp(3rem, 8vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--manga-black);
+    text-transform: uppercase;
+}
+.manga-title-sm { font-size: clamp(1.5rem, 4vw, 3rem); }
+.manga-title-md { font-size: clamp(2rem, 5vw, 5rem); }
+.manga-title-xl { font-size: clamp(5rem, 12vw, 14rem); }
+.manga-title-outline { color: transparent; -webkit-text-stroke: 4px var(--manga-black); }
+.manga-title-white { color: var(--manga-white); }
+.manga-title-white-outline { color: transparent; -webkit-text-stroke: 4px var(--manga-white); }
+.manga-title-accent { color: var(--manga-accent); }
+.manga-title-shadow { text-shadow: 6px 6px 0 rgba(0,0,0,0.2); }
+.manga-text-vertical { writing-mode: vertical-rl; text-orientation: upright; font-family: var(--font-dialog); font-size: 0.85rem; line-height: 1.6; }
+.manga-caption { font-family: var(--font-narrate); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* v2.0 — Body text for general web use */
+.manga-body { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: var(--manga-ink); }
+.manga-body-sm { font-size: 0.875rem; }
+.manga-body-lg { font-size: 1.125rem; }
+.manga-subtitle {
+    font-family: var(--font-narrate);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════════════
+   10. SEPARADORES Y DIVIDERS
+══════════════════════════════════════════════════════ */
+.manga-divider { width: 100%; height: 6px; background: var(--manga-black); margin: 4px 0; }
+.manga-divider-thin { height: 2px; background: var(--manga-black); margin: 4px 0; }
+.manga-divider-double { height: 2px; background: var(--manga-black); box-shadow: 0 4px 0 var(--manga-black); margin: 6px 0; }
+.manga-divider-dotted { border: none; border-top: 4px dotted var(--manga-black); margin: 8px 0; }
+.manga-divider-zigzag {
+    height: 12px; margin: 8px 0;
+    background: linear-gradient(135deg, var(--manga-black) 25%, transparent 25%) -10px 0,
+                linear-gradient(225deg, var(--manga-black) 25%, transparent 25%) -10px 0,
+                linear-gradient(315deg, var(--manga-black) 25%, transparent 25%),
+                linear-gradient(45deg, var(--manga-black) 25%, transparent 25%);
+    background-size: 20px 12px;
+    background-color: var(--manga-paper);
+}
+
+/* ═══════════════════════════════════════════════════════
+   11. POSICIONAMIENTO
+══════════════════════════════════════════════════════ */
+.manga-abs { position: absolute; z-index: 7; }
+.manga-abs-tl { top: 8px; left: 8px; }
+.manga-abs-tr { top: 8px; right: 8px; }
+.manga-abs-bl { bottom: 8px; left: 8px; }
+.manga-abs-br { bottom: 8px; right: 8px; }
+.manga-abs-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.manga-abs-tc { top: 8px; left: 50%; transform: translateX(-50%); }
+.manga-abs-bc { bottom: 8px; left: 50%; transform: translateX(-50%); }
+.manga-float { position: relative; z-index: 20; margin-top: -40px; margin-bottom: -40px; }
+
+/* ═══════════════════════════════════════════════════════
+   12. EFECTOS DE IMPACTO
+══════════════════════════════════════════════════════ */
+.impact-star {
+    display: inline-block; width: 80px; height: 80px; background: var(--manga-black); position: relative;
+    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.impact-star-white { background: var(--manga-white); border: 3px solid var(--manga-black); }
+.impact-burst {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 100px; height: 100px; background: var(--manga-black);
+    clip-path: polygon(50% 0%,55% 30%,70% 15%,60% 38%,85% 30%,70% 48%,100% 50%,70% 52%,85% 70%,60% 62%,70% 85%,55% 70%,50% 100%,45% 70%,30% 85%,40% 62%,15% 70%,30% 52%,0% 50%,30% 48%,15% 30%,40% 38%,30% 15%,45% 30%);
+    color: var(--manga-white); font-family: var(--font-impact); font-size: 1rem; text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   13. MARCOS
+══════════════════════════════════════════════════════ */
+.manga-frame { border: 8px solid var(--manga-black); box-shadow: 8px 8px 0 var(--manga-black); }
+.manga-frame-thick { border: 12px solid var(--manga-black); box-shadow: 12px 12px 0 var(--manga-black); }
+.manga-frame-accent { border: 8px solid var(--manga-accent); box-shadow: 8px 8px 0 var(--manga-accent); }
+
+/* ═══════════════════════════════════════════════════════
+   14. UTILIDADES
+══════════════════════════════════════════════════════ */
+.rotate-1 { transform: rotate(1deg); }
+.rotate-2 { transform: rotate(2deg); }
+.rotate-3 { transform: rotate(3deg); }
+.rotate-5 { transform: rotate(5deg); }
+.rotate--1 { transform: rotate(-1deg); }
+.rotate--2 { transform: rotate(-2deg); }
+.rotate--3 { transform: rotate(-3deg); }
+.rotate--5 { transform: rotate(-5deg); }
+.z-top { z-index: 50; }
+.z-high { z-index: 20; }
+.z-normal { z-index: 5; }
+.z-low { z-index: 1; }
+
+/* Spacing */
+.manga-p-sm { padding: 8px; }
+.manga-p-md { padding: 16px; }
+.manga-p-lg { padding: 24px; }
+.manga-p-xl { padding: 40px; }
+.manga-m-auto { margin: 0 auto; }
+.manga-gap-sm { gap: 4px; }
+.manga-gap-md { gap: 8px; }
+.manga-gap-lg { gap: 16px; }
+
+/* Flex helpers */
+.manga-flex { display: flex; }
+.manga-flex-center { display: flex; align-items: center; justify-content: center; }
+.manga-flex-col { flex-direction: column; }
+.manga-flex-wrap { flex-wrap: wrap; }
+
+/* Text align */
+.manga-text-left { text-align: left; }
+.manga-text-center { text-align: center; }
+.manga-text-right { text-align: right; }
+
+/* Width */
+.manga-w-full { width: 100%; }
+.manga-w-half { width: 50%; }
+.manga-mw-sm { max-width: 480px; }
+.manga-mw-md { max-width: 680px; }
+.manga-mw-lg { max-width: 860px; }
+.manga-mw-xl { max-width: 1100px; }
+
+/* ═══════════════════════════════════════════════════════
+   15. v2.0 — BUTTONS (.manga-btn-*)
+   Botones estilo manga para cualquier web
+══════════════════════════════════════════════════════ */
+.manga-btn {
+    display: inline-block;
+    font-family: var(--font-impact);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border: 3px solid var(--manga-black);
+    background: var(--manga-white);
+    color: var(--manga-black);
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    box-shadow: 4px 4px 0 var(--manga-black);
+    user-select: none;
+}
+.manga-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--manga-black);
+}
+.manga-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--manga-black);
+}
+
+.manga-btn-dark {
+    background: var(--manga-black);
+    color: var(--manga-white);
+    border-color: var(--manga-black);
+    box-shadow: 4px 4px 0 var(--manga-gray-dark);
+}
+
+.manga-btn-accent {
+    background: var(--manga-accent);
+    color: var(--manga-white);
+    border-color: var(--manga-black);
+}
+
+.manga-btn-outline {
+    background: transparent;
+    color: var(--manga-black);
+    box-shadow: none;
+    border-width: 3px;
+}
+.manga-btn-outline:hover {
+    background: var(--manga-black);
+    color: var(--manga-white);
+    box-shadow: none;
+    transform: none;
+}
+
+.manga-btn-pill {
+    border-radius: 999px;
+}
+.manga-btn-sm {
+    font-size: 0.8rem;
+    padding: 8px 18px;
+}
+.manga-btn-lg {
+    font-size: 1.3rem;
+    padding: 16px 36px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   16. v2.0 — CARDS (.manga-card-*)
+   Tarjetas versátiles para productos, portfolios, etc.
+══════════════════════════════════════════════════════ */
+.manga-card {
+    position: relative;
+    background: var(--manga-white);
+    border: 3px solid var(--manga-black);
+    overflow: hidden;
+    transition: all var(--transition-bounce);
+}
+.manga-card:hover {
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow: var(--manga-shadow-lg);
+}
+
+.manga-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 3px solid var(--manga-black);
+    filter: grayscale(100%) contrast(1.15);
+    transition: filter var(--transition-normal);
+}
+.manga-card:hover .manga-card-img {
+    filter: grayscale(0%) contrast(1);
+}
+
+.manga-card-body {
+    padding: 16px;
+}
+
+.manga-card-title {
+    font-family: var(--font-impact);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+.manga-card-text {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--manga-gray-dark);
+    margin-bottom: 12px;
+}
+
+.manga-card-price {
+    font-family: var(--font-impact);
+    font-size: 1.8rem;
+    color: var(--manga-accent);
+}
+.manga-card-price-old {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    opacity: 0.5;
+    margin-left: 8px;
+}
+
+.manga-card-footer {
+    padding: 12px 16px;
+    border-top: 2px solid var(--manga-black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Card dark variant */
+.manga-card-dark {
+    background: var(--manga-black);
+    color: var(--manga-white);
+}
+.manga-card-dark .manga-card-text { color: var(--manga-gray-mid); }
+.manga-card-dark .manga-card-img { border-bottom-color: var(--manga-white); }
+
+/* ═══════════════════════════════════════════════════════
+   17. v2.0 — BADGES (.manga-badge-*)
+══════════════════════════════════════════════════════ */
+.manga-badge {
+    display: inline-block;
+    font-family: var(--font-impact);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 2px solid var(--manga-black);
+    background: var(--manga-white);
+    color: var(--manga-black);
+}
+.manga-badge-dark { background: var(--manga-black); color: var(--manga-white); }
+.manga-badge-accent { background: var(--manga-accent); color: var(--manga-white); border-color: var(--manga-accent); }
+.manga-badge-pill { border-radius: 999px; }
+.manga-badge-float {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    z-index: 10;
+    transform: rotate(5deg);
+}
+
+/* ═══════════════════════════════════════════════════════
+   18. v2.0 — HERO SECTIONS (.manga-hero-*)
+   Secciones hero para landing pages
+══════════════════════════════════════════════════════ */
+.manga-hero {
+    position: relative;
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--manga-black);
+    color: var(--manga-white);
+}
+
+.manga-hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.manga-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.3) brightness(0.4);
+    z-index: 1;
+}
+
+.manga-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+.manga-hero-overlay-halftone {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+.manga-hero-overlay-lines {
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.15) 3px, rgba(0,0,0,0.15) 4px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   19. v2.0 — NAVBAR (.manga-nav)
+══════════════════════════════════════════════════════ */
+.manga-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background: var(--manga-black);
+    color: var(--manga-white);
+    border-bottom: 4px solid var(--manga-black);
+    font-family: var(--font-impact);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.manga-nav-brand {
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    color: var(--manga-white);
+}
+.manga-nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+}
+.manga-nav-links a {
+    color: var(--manga-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+.manga-nav-links a:hover { color: var(--manga-accent); }
+.manga-nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--manga-accent);
+    transition: width var(--transition-fast);
+}
+.manga-nav-links a:hover::after { width: 100%; }
+
+/* ═══════════════════════════════════════════════════════
+   20. v2.0 — TAGS / CHIPS (.manga-tag)
+══════════════════════════════════════════════════════ */
+.manga-tag {
+    display: inline-block;
+    font-family: var(--font-narrate);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border: 2px solid var(--manga-black);
+    background: transparent;
+    margin: 2px;
+}
+.manga-tag-filled { background: var(--manga-black); color: var(--manga-white); }
+
+/* ═══════════════════════════════════════════════════════
+   21. v2.0 — TESTIMONIALS / QUOTE
+══════════════════════════════════════════════════════ */
+.manga-quote {
+    position: relative;
+    font-family: var(--font-dialog);
+    font-size: 1.1rem;
+    font-style: italic;
+    padding: 24px 24px 24px 48px;
+    border-left: 6px solid var(--manga-black);
+    background: var(--manga-gray-light);
+}
+.manga-quote::before {
+    content: '「';
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    font-size: 2.5rem;
+    font-family: var(--font-impact);
+    opacity: 0.3;
+    font-style: normal;
+}
+.manga-quote-author {
+    display: block;
+    font-family: var(--font-narrate);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 8px;
+    font-style: normal;
+    opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════════════════
+   22. v2.0 — ANIMATIONS
+══════════════════════════════════════════════════════ */
+@keyframes manga-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px) rotate(-1deg); }
+    75% { transform: translateX(4px) rotate(1deg); }
+}
+@keyframes manga-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+@keyframes manga-float-anim {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+@keyframes manga-slam {
+    0% { transform: scale(3) rotate(-10deg); opacity: 0; }
+    60% { transform: scale(0.9) rotate(2deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes manga-slide-up {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes manga-slide-left {
+    from { transform: translateX(30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes manga-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes manga-ink-reveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+}
+
+.anim-shake { animation: manga-shake 0.4s ease-in-out; }
+.anim-shake-hover:hover { animation: manga-shake 0.4s ease-in-out; }
+.anim-pulse { animation: manga-pulse 2s ease-in-out infinite; }
+.anim-float { animation: manga-float-anim 3s ease-in-out infinite; }
+.anim-slam { animation: manga-slam 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.anim-slide-up { animation: manga-slide-up 0.6s ease-out both; }
+.anim-slide-left { animation: manga-slide-left 0.6s ease-out both; }
+.anim-fade-in { animation: manga-fade-in 0.8s ease-out both; }
+.anim-ink-reveal { animation: manga-ink-reveal 0.8s ease-out both; }
+
+/* Delay utilities */
+.anim-delay-1 { animation-delay: 0.1s; }
+.anim-delay-2 { animation-delay: 0.2s; }
+.anim-delay-3 { animation-delay: 0.3s; }
+.anim-delay-4 { animation-delay: 0.4s; }
+.anim-delay-5 { animation-delay: 0.5s; }
+
+/* ═══════════════════════════════════════════════════════
+   23. v2.0 — TOOLTIP
+══════════════════════════════════════════════════════ */
+.manga-tooltip {
+    position: relative;
+    cursor: help;
+}
+.manga-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: var(--manga-black);
+    color: var(--manga-white);
+    font-family: var(--font-narrate);
+    font-size: 0.72rem;
+    padding: 6px 12px;
+    white-space: nowrap;
+    border: 2px solid var(--manga-white);
+    pointer-events: none;
+    opacity: 0;
+    transition: all var(--transition-fast);
+    z-index: 100;
+}
+.manga-tooltip:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* ═══════════════════════════════════════════════════════
+   24. v2.0 — CONTAINER / SECTION
+══════════════════════════════════════════════════════ */
+.manga-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.manga-container-sm { max-width: 680px; }
+.manga-container-lg { max-width: 1400px; }
+
+.manga-section {
+    padding: 60px 0;
+}
+.manga-section-dark {
+    background: var(--manga-black);
+    color: var(--manga-white);
+}
+
+/* ═══════════════════════════════════════════════════════
+   25. RESPONSIVE
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .panel-grid-trio { grid-template-columns: 1fr; }
+    .panel-grid-quad { grid-template-columns: 1fr 1fr; }
+    .panel-grid-asymmetric { grid-template-columns: 1fr; }
+    .panel-grid-main-side { grid-template-columns: 1fr; }
+    .panel-grid-side-main { grid-template-columns: 1fr; }
+    .panel-grid-golden { grid-template-columns: 1fr; }
+    .panel-grid-golden-reverse { grid-template-columns: 1fr; }
+    .panel-grid-magazine { grid-template-columns: 1fr; }
+    .panel-grid-magazine > *:first-child { grid-column: auto; grid-row: auto; }
+    .panel-grid-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .panel-grid-mosaic > * { grid-column: auto !important; grid-row: auto !important; }
+    .manga-hero { min-height: 50vh; }
+    .manga-nav-links { gap: 12px; }
+    .manga-nav-links a { font-size: 0.75rem; }
+    .hide-mobile { display: none !important; }
+}
+
+@media (max-width: 480px) {
+    .panel-grid-duo { grid-template-columns: 1fr; }
+    .panel-grid-quad { grid-template-columns: 1fr; }
+    .sfx-xl { font-size: 6rem; }
+    .sfx-mega { font-size: 8rem; }
+}
+
+/* ─── FIN DE MANGACSS v2.0 ─── */
