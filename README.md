@@ -2,7 +2,8 @@
 
 **Librería 100% CSS+HTML con estilo manga** para cualquier web: landing pages, portfolios, e-commerce, blogs, o simplemente para darle un toque de viñeta a tus proyectos. Sin dependencias, sin JavaScript, sin complicaciones. Solo HTML y CSS puro con ese toque de tinta.
 
-![MangaCSS](https://picsum.photos/seed/mangacss/800/400)
+![MangaCSS]
+<img width="1304" height="372" alt="Image" src="https://github.com/user-attachments/assets/bc911d3b-5a64-41ab-bd28-659ad385707a" />
 
 🚀 **Características principales**
 
@@ -19,12 +20,13 @@
 Descarga directa
 ```bash
 # Clona o descarga el archivo CSS
-curl -O https://tusitio.com/mangacss.css
+curl -O https://raw.githubusercontent.com/JZ-Dev0/MangaCSS/main/mangacss.css
+
 ```
 
 CDN (si lo tienes alojado)
 ```html
-<link rel="stylesheet" href="https://tusitio.com/mangacss.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/JZ-Dev0/MangaCSS/main/mangacss.css">
 ```
 
 npm (próximamente)
